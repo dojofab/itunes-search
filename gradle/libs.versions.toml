@@ -1,6 +1,8 @@
 [versions]
 agp = "8.8.0"
-hilt = "2.52"
+androidx-lifecycle = "2.8.4"
+hilt = "2.54"
+hilt-navigation = "1.2.0"
 kotlin = "2.0.0"
 coil-compose = "2.7.0"
 compose = "1.7.7"
@@ -10,7 +12,8 @@ compose-navigation = "2.8.6"
 androidx-activityCompose = "1.10.0"
 koin-android = "4.0.0"
 koin-core = "4.0.0"
-ktor = "3.0.1"
+ktor = "2.3.12"
+napier = "2.7.1"
 room = "2.7.0-alpha13"
 serialization = "1.8.0"
 
@@ -19,6 +22,7 @@ kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotl
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 androidx-compose-material3-adaptive = { module = "androidx.compose.material3.adaptive:adaptive", version.ref = "compose-material3-adaptive" }
 androidx-compose-material3-adaptive-layout = { module = "androidx.compose.material3.adaptive:adaptive-layout", version.ref = "compose-material3-adaptive" }
+androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
@@ -28,6 +32,7 @@ compose-material3 = { module = "androidx.compose.material3:material3", version.r
 compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "compose-navigation" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-navigation" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin-core" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin-android" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization"}
@@ -38,6 +43,7 @@ ktor-client-darwin = { group = "io.ktor", name = "ktor-client-darwin", version.r
 ktor-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
 ktor-client-serialization = { group = "io.ktor", name = "ktor-client-serialization", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
+napier-logger = { module = "io.github.aakira:napier", version.ref = "napier" }
 room = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 

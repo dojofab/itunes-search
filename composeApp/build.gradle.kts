@@ -52,8 +52,10 @@ dependencies {
     implementation(libs.compose.navigation)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation)
     kapt(libs.hilt.android.compiler)
     implementation(libs.coil.compose)
+    implementation(libs.koin.android)
 }
 
 // Allow references to generated code
