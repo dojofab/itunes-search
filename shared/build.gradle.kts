@@ -4,7 +4,6 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlin.serialization)
-    //alias(libs.plugins.room)
 }
 
 kotlin {
@@ -45,6 +44,11 @@ kotlin {
 
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+            implementation(kotlin("test-annotations-common"))
+
+            implementation(libs.assertk)
+            implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.koin.test)
         }
 
         androidMain.dependencies {
@@ -53,6 +57,14 @@ kotlin {
 
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
+        }
+
+        iosTest.dependencies {
+
+        }
+
+        jvmTest.dependencies {
+            implementation(libs.mockk.common)
         }
     }
 }
@@ -67,4 +79,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+}
+dependencies {
+    testImplementation(libs.junit)
 }

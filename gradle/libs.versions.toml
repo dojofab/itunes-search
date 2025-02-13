@@ -15,8 +15,13 @@ koin-android = "4.0.0"
 koin-core = "4.0.0"
 ktor = "2.3.12"
 napier = "2.7.1"
-room = "2.7.0-alpha13"
 serialization = "1.8.0"
+assertk = "0.28.1"
+coroutines-test = "1.10.1"
+core-testing = "2.1.0"
+junit = "4.12"
+koin-test = "3.5.0"
+mockk-common = "1.13.7"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -46,8 +51,11 @@ ktor-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = 
 ktor-client-serialization = { group = "io.ktor", name = "ktor-client-serialization", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 napier-logger = { module = "io.github.aakira:napier", version.ref = "napier" }
-room = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+assertk = { module = "com.willowtreeapps.assertk:assertk", version.ref = "assertk" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines-test" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+koin-test = { group = "io.insert-koin", name = "koin-test", version.ref = "koin-test" }
+mockk-common = { group = "io.mockk", name = "mockk-common", version.ref = "mockk-common" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -58,4 +66,3 @@ kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref =
 kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-room = { id = "androidx.room", version.ref = "room" }
