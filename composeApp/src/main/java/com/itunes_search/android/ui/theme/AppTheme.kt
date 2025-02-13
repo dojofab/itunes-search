@@ -14,6 +14,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.itunes_search.android.extensions.toColor
+import com.itunes_search.design.ColorTokens
 
 @Composable
 fun AppTheme(
@@ -22,20 +24,20 @@ fun AppTheme(
 ) {
     val colors = if (darkTheme) {
         darkColorScheme(
-            primary = Color(0xFFBB86FC),
-            secondary = Color(0xFF03DAC5),
-            tertiary = Color(0xFF3700B3)
+            primary = ColorTokens.primary.toColor(),
+            secondary = ColorTokens.secondary.toColor(),
+            tertiary = ColorTokens.tertiary.toColor()
         )
     } else {
         lightColorScheme(
-            primary = Color(0xFF6200EE),
-            secondary = Color(0xFF03DAC5),
-            tertiary = Color(0xFF3700B3)
+            primary = ColorTokens.primary.toColor(),
+            secondary =  ColorTokens.secondary.toColor(),
+            tertiary = ColorTokens.tertiary.toColor()
         )
     }
     val typography = Typography(
         bodyMedium = TextStyle(
-            fontFamily = FontFamily.Default,
+            fontFamily = FontFamily.Monospace,
             fontWeight = FontWeight.Normal,
             fontSize = 16.sp
         )

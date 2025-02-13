@@ -1,5 +1,8 @@
 package com.itunes_search.domain
 
+import kotlinx.datetime.Instant
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -48,5 +51,38 @@ data class Content(
     val contentAdvisoryRating: String? = null,
     val shortDescription: String? = null,
     val longDescription: String? = null,
+    val description: String? = null,
     val hasITunesExtras: Boolean? = null,
-)
+) {
+    val trackTime: String?
+        get() {
+            if (trackTimeMillis == null) return null
+
+            val totalSeconds = trackTimeMillis / 1000
+            val hours = totalSeconds / 3600
+            val minutes = (totalSeconds % 3600) / 60
+            val seconds = totalSeconds % 60
+
+            return if (hours > 0) {
+                "${hours.toString().padStart(2, '0')}h:${minutes.toString().padStart(2, '0')}m:${seconds.toString().padStart(2, '0')}s"
+            } else {
+                "${minutes.toString().padStart(2, '0')}m:${seconds.toString().padStart(2, '0')}s"
+            }
+        }
+
+    val releaseDateDisplay: String?
+        get() {
+            try {
+                val instant = Instant.parse(releaseDate)
+                val localDateTime = instant.toLocalDateTime(TimeZone.currentSystemDefault())
+
+                val month = localDateTime.month.name.lowercase().replaceFirstChar { it.uppercase() }
+                val day = localDateTime.dayOfMonth
+                val year = localDateTime.year
+
+                return "$month $day, $year"
+            } catch(e: Exception) {
+                return null
+            }
+        }
+}

@@ -2,6 +2,42 @@ package com.itunes_search.design
 
 object DesignTokens {
 
+    object Content {
+        const val MutedContentOpacity = 0.40
+        const val ContentHeight = 200
+    }
+
+    object Image {
+        val contentImageHeight = 100.0
+        val contentDetailsImageHeight = 300.0
+        val contentTrackImageHeight = 50.0
+
+        const val gradientBackgroundSizeScale = 0.9f
+    }
+
+    object CornerRadius {
+        // https://m3.material.io/styles/shape/shape-scale-tokens
+        // https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ShapeTokens.kt
+        val None = 0.0
+        val Xs = 4.0
+        val Sm = 8.0
+        val Md = 12.0
+        val Lg = 16.0
+        val Xl = 28.0
+        val Xxl = 40.0
+
+        fun sized(sizePreset: SizePreset) =
+            when (sizePreset) {
+                SizePreset.Xs -> Xs
+                SizePreset.Sm -> Sm
+                SizePreset.Md -> Md
+                SizePreset.Lg -> Lg
+                SizePreset.Xl -> Xl
+                SizePreset.Xxl -> Xxl
+                is SizePreset.Custom -> sizePreset.value
+            }
+    }
+
     object Spacing {
         val None = 0.0
         val Min = 2.0

@@ -40,7 +40,7 @@ kotlin {
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.napier.logger)
             implementation(libs.androidx.lifecycle.viewmodel)
-            //implementation(libs.room)
+            implementation(libs.kotlinx.datetime)
         }
 
         commonTest.dependencies {
@@ -68,6 +68,3 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
-/*dependencies {
-    implementation(libs.androidx.lifecycle.viewmodel.android)
-}*/

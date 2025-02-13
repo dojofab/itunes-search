@@ -10,6 +10,7 @@ compose-material3 = "1.3.1"
 compose-material3-adaptive = "1.0.0-beta01"
 compose-navigation = "2.8.6"
 androidx-activityCompose = "1.10.0"
+kotlinx-datetime = "0.6.1"
 koin-android = "4.0.0"
 koin-core = "4.0.0"
 ktor = "2.3.12"
@@ -35,6 +36,7 @@ hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-comp
 hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-navigation" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin-core" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin-android" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization"}
 ktor-client-android = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor" }
 ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">iTunes Search</string>
+    <string name="content_not_found">Content Not Found</string>
+    <string name="about_the_artist">About the Artist</string>
+    <string name="track">Track</string>
+    <string name="track_duration">Track Duration</string>
+    <string name="album">Album</string>
+    <string name="release_date">Release Date</string>
+    <string name="genre">Genre</string>
+    <string name="price">Price</string>
+
+</resources>
