@@ -26,6 +26,7 @@ fun AppNavHost(
     val viewModel: AppNavHostViewModel = hiltViewModel()
 
     NavHost(
+        modifier = modifier,
         navController = navController,
         startDestination = Main
     ) {
@@ -40,7 +41,10 @@ fun AppNavHost(
 
         composable<Details> {
             DetailsScreen(
-                content = viewModel.selectedContent.value
+                content = viewModel.selectedContent.value,
+                onBack = {
+                    navController.navigateUp()
+                }
             )
         }
     }

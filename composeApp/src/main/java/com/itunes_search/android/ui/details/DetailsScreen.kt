@@ -1,24 +1,30 @@
 package com.itunes_search.android.ui.details
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.itunes_search.android.R
@@ -34,6 +40,7 @@ import com.itunes_search.android.ui.components.GenreView
 import com.itunes_search.android.ui.components.ItemView
 import com.itunes_search.android.ui.components.PriceView
 import com.itunes_search.android.ui.theme.AppTheme
+import com.itunes_search.data.faker.Faker
 import com.itunes_search.design.ColorTokens
 import com.itunes_search.design.DesignTokens
 import com.itunes_search.design.SizePreset
@@ -42,16 +49,40 @@ import com.itunes_search.domain.Content
 @Composable
 fun DetailsScreen(
     content: Content?,
+    onBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    if (content == null) {
-        ContentNotFoundView(modifier = modifier)
-    } else {
-        DetailsView(
-            content = content,
-            modifier = modifier
-        )
+    Scaffold(
+        modifier = modifier,
+        topBar = {
+            IconButton(
+                modifier = Modifier.windowInsetsPadding(WindowInsets.statusBars),
+                onClick = onBack
+            ) {
+                Icon(
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = "Back",
+                    tint = ColorTokens.onBackground.toColor()
+                )
+            }
+        }
+    ) { padding ->
+        AppGradientBackground {
+            if (content == null) {
+                ContentNotFoundView(
+                    modifier = modifier
+                        .padding(padding)
+                )
+            } else {
+                DetailsView(
+                    content = content,
+                    modifier = modifier
+                        .padding(padding)
+                )
+            }
+        }
     }
+
 }
 
 @Composable
@@ -59,40 +90,32 @@ private fun DetailsView(
     content: Content,
     modifier: Modifier = Modifier
 ) {
-    Scaffold(
-        modifier = modifier,
-        containerColor = Color.Black
-    ) { padding ->
-        AppGradientBackground {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .fillMaxHeight(1.0f)
-                    .padding(padding)
-                    .verticalScroll(rememberScrollState()),
-                verticalArrangement = Arrangement.Top,
-            ) {
-                ContentImage(
-                    url = content.artworkUrl100,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .size(DesignTokens.Image.contentDetailsImageHeight.dp),
-                )
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .fillMaxHeight(1.0f)
+            .verticalScroll(rememberScrollState()),
+        verticalArrangement = Arrangement.Top,
+    ) {
+        ContentImage(
+            url = content.artworkUrl100,
+            modifier = Modifier
+                .fillMaxWidth()
+                .size(DesignTokens.Image.contentDetailsImageHeight.dp),
+        )
 
-                ArtistInfoView(
-                    content = content
-                )
+        ArtistInfoView(
+            content = content
+        )
 
-                Divider()
+        Divider()
 
-                TrackInfoView(
-                    content = content
-                )
+        TrackInfoView(
+            content = content
+        )
 
-                content.description?.let {
-                    DescriptionView(it)
-                }
-            }
+        content.description?.let {
+            DescriptionView(it)
         }
     }
 }
@@ -250,22 +273,28 @@ private fun Divider(
 private fun ContentNotFoundView(
     modifier: Modifier = Modifier
 ) {
-    AppGradientBackground {
-        Column(
-            modifier = modifier
-                .fillMaxWidth()
-                .background(
-                    color = Color.Black
-                ),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = stringResource(R.string.content_not_found),
-                color = ColorTokens.background.toColor(),
-                style = MaterialTheme.typography.titleLarge
-            )
-        }
+    Column(
+        modifier = modifier
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = stringResource(R.string.content_not_found),
+            color = ColorTokens.onBackground.toColor(),
+            style = MaterialTheme.typography.titleLarge
+        )
+    }
+}
+
+@DevicePreviews
+@Composable
+private fun DetailsViewNoContentPreview() {
+    AppTheme {
+        DetailsScreen(
+            content = null,
+            onBack = {}
+        )
     }
 }
 
@@ -273,9 +302,10 @@ private fun ContentNotFoundView(
 @Composable
 private fun DetailsViewPreview() {
     AppTheme {
-        /*DetailsScreen(
-            adaptiveInfo = currentWindowAdaptiveInfo(),
-            content = null
-        )*/
+        DetailsScreen(
+            content = Faker.content.build(),
+            onBack = {}
+        )
     }
 }
+

@@ -7,8 +7,14 @@ class NetworkDataSourceImpl(
     private val apiClient: ApiClient
 ): NetworkDataSource {
 
-    override suspend fun search(term: String?): Result<SearchResponse> =
+    override suspend fun search(
+        term: String?,
+        limit: Int?
+    ): Result<SearchResponse> =
         runCatching {
-            return@runCatching apiClient.search(term)
+            return@runCatching apiClient.search(
+                term = term,
+                limit = limit
+            )
         }
 }

@@ -1,7 +1,9 @@
 package com.itunes_search.data.network.api
 
 import com.itunes_search.data.network.api.NetworkConfig.BASE_URL
+import com.itunes_search.data.network.api.NetworkConfig.DEFAULT_LIMIT_VALUE
 import com.itunes_search.data.network.api.NetworkConfig.DEFAULT_SEARCH_VALUE
+import com.itunes_search.data.network.api.NetworkConfig.LIMIT_PARAMETER
 import com.itunes_search.data.network.api.NetworkConfig.REQUEST_TIMEOUT
 import com.itunes_search.data.network.api.NetworkConfig.SEARCH_END_POINT
 import com.itunes_search.data.network.api.NetworkConfig.SOCKET_TIMEOUT
@@ -50,13 +52,19 @@ class ApiClient {
         }
     }
 
-    suspend fun search(term: String?): SearchResponse {
+    suspend fun search(
+        term: String?,
+        limit: Int?
+    ): SearchResponse {
         val json = Json {
             ignoreUnknownKeys = true
         }
 
         val response: HttpResponse = httpClient.get(SEARCH_END_POINT) {
-            url { parameters.append(TERM_PARAMETER, term ?: DEFAULT_SEARCH_VALUE) }
+            url {
+                parameters.append(TERM_PARAMETER, term ?: DEFAULT_SEARCH_VALUE)
+                parameters.append(LIMIT_PARAMETER, limit?.toString() ?: DEFAULT_LIMIT_VALUE.toString())
+            }
         }
 
         // Read response as text

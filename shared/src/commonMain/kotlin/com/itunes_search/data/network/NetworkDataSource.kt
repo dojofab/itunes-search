@@ -5,6 +5,7 @@ import com.itunes_search.domain.SearchResponse
 interface NetworkDataSource {
 
     suspend fun search(
-        term: String?
+        term: String?,
+        limit: Int?
     ): Result<SearchResponse>
 }

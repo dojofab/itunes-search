@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface ContentRepository {
     suspend fun search(
-        term: String?
+        term: String?,
+        limit: Int?
     ): Flow<AsyncOperation<SearchResponse>>
 }

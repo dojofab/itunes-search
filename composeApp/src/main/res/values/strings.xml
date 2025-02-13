@@ -10,5 +10,8 @@
     <string name="release_date">Release Date</string>
     <string name="genre">Genre</string>
     <string name="price">Price</string>
+    <string name="retry">Retry</string>
+    <string name="search_placeholder">Search Artist</string>
+    <string name="no_available_contents">No Available Contents</string>
 
 </resources>

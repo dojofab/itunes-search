@@ -11,9 +11,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.itunes_search.android.extensions.themePaddingV
 import com.itunes_search.android.extensions.toColor
+import com.itunes_search.android.ui.theme.AppTheme
+import com.itunes_search.data.faker.Faker
 import com.itunes_search.design.ColorTokens
 import com.itunes_search.design.DesignTokens
 import com.itunes_search.design.SizePreset
@@ -63,5 +66,16 @@ fun ContentItem(
                 color = ColorTokens.onBackgroundMuted.toColor()
             )
         }
+    }
+}
+
+@Preview
+@Composable
+private fun ContentItemPreview() {
+    AppTheme {
+        ContentItem(
+            content = Faker.content.build(),
+            onContentClick = {}
+        )
     }
 }

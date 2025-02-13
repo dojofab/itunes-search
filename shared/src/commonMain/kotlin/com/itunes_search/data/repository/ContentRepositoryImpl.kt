@@ -12,9 +12,15 @@ class ContentRepositoryImpl(
     private val networkDataSource: NetworkDataSource
 ): AsyncRequest(), ContentRepository {
 
-    override suspend fun search(term: String?): Flow<AsyncOperation<SearchResponse>> {
+    override suspend fun search(
+        term: String?,
+        limit: Int?
+    ): Flow<AsyncOperation<SearchResponse>> {
         return apiCall {
-            networkDataSource.search(term)
+            networkDataSource.search(
+                term = term,
+                limit = limit
+            )
         }
     }
 }
