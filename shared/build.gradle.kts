@@ -62,10 +62,6 @@ kotlin {
         iosTest.dependencies {
 
         }
-
-        jvmTest.dependencies {
-            implementation(libs.mockk.common)
-        }
     }
 }
 
