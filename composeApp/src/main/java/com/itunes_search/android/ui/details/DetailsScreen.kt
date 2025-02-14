@@ -29,19 +29,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.itunes_search.android.R
 import com.itunes_search.android.annotations.DevicePreviews
+import com.itunes_search.android.extensions.onBackgroundMutedColor
 import com.itunes_search.android.extensions.themePadding
 import com.itunes_search.android.extensions.themePaddingH
 import com.itunes_search.android.extensions.themePaddingV
 import com.itunes_search.android.extensions.themeSpacerV
-import com.itunes_search.android.extensions.toColor
 import com.itunes_search.android.ui.components.AppGradientBackground
 import com.itunes_search.android.ui.components.ContentImage
 import com.itunes_search.android.ui.components.GenreView
 import com.itunes_search.android.ui.components.ItemView
 import com.itunes_search.android.ui.components.PriceView
 import com.itunes_search.android.ui.theme.AppTheme
+import com.itunes_search.android.ui.theme.ThemeManager
 import com.itunes_search.data.faker.Faker
-import com.itunes_search.design.ColorTokens
 import com.itunes_search.design.DesignTokens
 import com.itunes_search.design.SizePreset
 import com.itunes_search.domain.Content
@@ -62,7 +62,7 @@ fun DetailsScreen(
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
                     contentDescription = "Back",
-                    tint = ColorTokens.onBackground.toColor()
+                    tint = MaterialTheme.colorScheme.onBackground
                 )
             }
         }
@@ -131,8 +131,8 @@ private fun ArtistInfoView(
     ) {
         Text(
             text = content.artistName,
-            color = ColorTokens.onBackground.toColor(),
-            style = MaterialTheme.typography.titleLarge
+            color = MaterialTheme.colorScheme.onBackground,
+            style = MaterialTheme.typography.titleMedium
         )
     }
 }
@@ -159,7 +159,7 @@ private fun TrackInfoView(
                     value = {
                         Text(
                             text = it,
-                            color = ColorTokens.onBackground.toColor(),
+                            color = MaterialTheme.colorScheme.onBackground,
                             style = MaterialTheme.typography.bodySmall
                         )
                     }
@@ -173,7 +173,7 @@ private fun TrackInfoView(
                     value = {
                         Text(
                             text = it,
-                            color = ColorTokens.onBackground.toColor(),
+                            color = MaterialTheme.colorScheme.onBackground,
                             style = MaterialTheme.typography.bodySmall
                         )
                     }
@@ -187,7 +187,7 @@ private fun TrackInfoView(
                     value = {
                         Text(
                             text = it,
-                            color = ColorTokens.onBackground.toColor(),
+                            color = MaterialTheme.colorScheme.onBackground,
                             style = MaterialTheme.typography.bodySmall
                         )
                     }
@@ -209,7 +209,7 @@ private fun TrackInfoView(
                     value = {
                         Text(
                             text = it,
-                            color = ColorTokens.onBackground.toColor(),
+                            color = MaterialTheme.colorScheme.onBackground,
                             style = MaterialTheme.typography.bodySmall
                         )
                     }
@@ -244,15 +244,15 @@ private fun DescriptionView(
     ) {
         Text(
             text = stringResource(R.string.about_the_artist),
-            color = ColorTokens.onBackground.toColor(),
-            style = MaterialTheme.typography.titleLarge
+            color = MaterialTheme.colorScheme.onBackground,
+            style = MaterialTheme.typography.titleSmall
         )
 
         Spacer(modifier = Modifier.themeSpacerV(SizePreset.Sm))
 
         Text(
             text = about,
-            color = ColorTokens.onBackground.toColor(),
+            color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.bodySmall
         )
     }
@@ -265,7 +265,7 @@ private fun Divider(
     HorizontalDivider(
         modifier = modifier
             .themePaddingH(),
-        color = ColorTokens.onBackgroundMuted.toColor()
+        color = ThemeManager.theme.onBackgroundMutedColor
     )
 }
 
@@ -281,8 +281,8 @@ private fun ContentNotFoundView(
     ) {
         Text(
             text = stringResource(R.string.content_not_found),
-            color = ColorTokens.onBackground.toColor(),
-            style = MaterialTheme.typography.titleLarge
+            color = MaterialTheme.colorScheme.onBackground,
+            style = MaterialTheme.typography.titleMedium
         )
     }
 }

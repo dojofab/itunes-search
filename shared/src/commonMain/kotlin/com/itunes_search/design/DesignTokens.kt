@@ -5,14 +5,15 @@ object DesignTokens {
     object Content {
         const val MutedContentOpacity = 0.40
         const val ContentHeight = 200
+
+        const val GradientBackgroundOpacity = 0.75
+        const val GradientBackgroundSizeScale = 0.9f
     }
 
     object Image {
         val contentImageHeight = 100.0
         val contentDetailsImageHeight = 300.0
         val contentTrackImageHeight = 50.0
-
-        const val gradientBackgroundSizeScale = 0.9f
     }
 
     object CornerRadius {

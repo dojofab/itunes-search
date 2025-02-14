@@ -31,7 +31,7 @@ fun PriceView(
                 .themePaddingV(SizePreset.Xs)
                 .themePaddingH(SizePreset.Lg),
             text = "$price $currency",
-            color = ColorTokens.onBackground.toColor(),
+            color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.bodySmall
         )
     }

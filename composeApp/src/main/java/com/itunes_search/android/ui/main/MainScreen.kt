@@ -38,7 +38,6 @@ import com.itunes_search.android.ui.components.ContentItem
 import com.itunes_search.android.ui.components.SearchBar
 import com.itunes_search.android.ui.components.TopBar
 import com.itunes_search.android.ui.theme.AppTheme
-import com.itunes_search.design.ColorTokens
 import com.itunes_search.design.DesignTokens
 import com.itunes_search.design.SizePreset
 import com.itunes_search.domain.Content
@@ -148,8 +147,8 @@ private fun ErrorView(
     ) {
         Text(
             text = error.errorMessage,
-            color = ColorTokens.onBackground.toColor(),
-            style = MaterialTheme.typography.titleLarge
+            color = MaterialTheme.colorScheme.onBackground,
+            style = MaterialTheme.typography.titleMedium
         )
 
         Spacer(modifier = Modifier.themeSpacerV())
@@ -160,7 +159,7 @@ private fun ErrorView(
         ) {
             Text(
                 text = stringResource(R.string.retry),
-                color = ColorTokens.background.toColor(),
+                color = MaterialTheme.colorScheme.onBackground,
                 style = MaterialTheme.typography.labelLarge
             )
         }
@@ -179,8 +178,8 @@ private fun NoContentsAvailable(
     ) {
         Text(
             text = stringResource(R.string.no_available_contents),
-            color = ColorTokens.onBackground.toColor(),
-            style = MaterialTheme.typography.titleLarge
+            color = MaterialTheme.colorScheme.onBackground,
+            style = MaterialTheme.typography.titleSmall
         )
     }
 }

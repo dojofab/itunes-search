@@ -30,7 +30,7 @@ fun GenreView(
                 .themePaddingV(SizePreset.Xs)
                 .themePaddingH(SizePreset.Lg),
             text = genre,
-            color = ColorTokens.background.toColor(),
+            color = MaterialTheme.colorScheme.background,
             style = MaterialTheme.typography.bodySmall
         )
     }

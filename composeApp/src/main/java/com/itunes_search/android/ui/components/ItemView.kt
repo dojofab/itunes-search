@@ -12,9 +12,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.itunes_search.android.R
+import com.itunes_search.android.extensions.onBackgroundMutedColor
 import com.itunes_search.android.extensions.themePaddingV
 import com.itunes_search.android.extensions.toColor
 import com.itunes_search.android.ui.theme.AppTheme
+import com.itunes_search.android.ui.theme.ThemeManager
 import com.itunes_search.design.ColorTokens
 
 @Composable
@@ -31,7 +33,7 @@ fun ItemView(
     ) {
         Text(
             text = stringResource(label),
-            color = ColorTokens.onBackgroundMuted.toColor(),
+            color = ThemeManager.theme.onBackgroundMutedColor,
             style = MaterialTheme.typography.bodySmall
         )
 

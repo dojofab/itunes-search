@@ -13,9 +13,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.itunes_search.android.extensions.onBackgroundMutedColor
 import com.itunes_search.android.extensions.themePaddingV
 import com.itunes_search.android.extensions.toColor
 import com.itunes_search.android.ui.theme.AppTheme
+import com.itunes_search.android.ui.theme.ThemeManager
 import com.itunes_search.data.faker.Faker
 import com.itunes_search.design.ColorTokens
 import com.itunes_search.design.DesignTokens
@@ -48,8 +50,8 @@ fun ContentItem(
             Text(
                 content.artistName,
                 modifier = Modifier.themePaddingV(SizePreset.Sm),
-                style = MaterialTheme.typography.titleMedium,
-                color = ColorTokens.onBackground.toColor(),
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.onBackground,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
             )
@@ -57,13 +59,13 @@ fun ContentItem(
             Text(
                 content.country,
                 style = MaterialTheme.typography.labelSmall,
-                color = ColorTokens.onBackground.toColor()
+                color = MaterialTheme.colorScheme.onBackground,
             )
 
             Text(
                 content.primaryGenreName,
                 style = MaterialTheme.typography.labelSmall,
-                color = ColorTokens.onBackgroundMuted.toColor()
+                color = ThemeManager.theme.onBackgroundMutedColor
             )
         }
     }

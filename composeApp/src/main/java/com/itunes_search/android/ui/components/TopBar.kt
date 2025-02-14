@@ -27,8 +27,8 @@ fun TopBar(
     ) {
         Text(
             text = stringResource(R.string.app_name),
-            color = ColorTokens.onBackground.toColor(),
-            style = MaterialTheme.typography.titleLarge
+            color = MaterialTheme.colorScheme.onBackground,
+            style = MaterialTheme.typography.titleMedium
         )
     }
 }
