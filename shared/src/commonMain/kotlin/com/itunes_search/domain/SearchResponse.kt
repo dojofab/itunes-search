@@ -8,11 +8,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class SearchResponse(
     val resultCount: Int,
-    val results: List<Content>
+    val results: List<ContentModel>
 )
 
 @Serializable
-data class Content(
+data class ContentModel(
     val wrapperType: String,
     val kind: String? = null,
     val collectionId: Long? = null,

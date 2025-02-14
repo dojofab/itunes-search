@@ -32,7 +32,6 @@ import com.itunes_search.android.R
 import com.itunes_search.android.annotations.DevicePreviews
 import com.itunes_search.android.extensions.themePadding
 import com.itunes_search.android.extensions.themeSpacerV
-import com.itunes_search.android.extensions.toColor
 import com.itunes_search.android.ui.components.AppGradientBackground
 import com.itunes_search.android.ui.components.ContentItem
 import com.itunes_search.android.ui.components.SearchBar
@@ -40,7 +39,7 @@ import com.itunes_search.android.ui.components.TopBar
 import com.itunes_search.android.ui.theme.AppTheme
 import com.itunes_search.design.DesignTokens
 import com.itunes_search.design.SizePreset
-import com.itunes_search.domain.Content
+import com.itunes_search.domain.ContentModel
 import com.itunes_search.ui.ContentUiState
 import com.itunes_search.utils.Message
 import com.itunes_search.utils.RepositoryError
@@ -48,7 +47,7 @@ import com.itunes_search.utils.RepositoryErrorCode
 
 @Composable
 fun MainScreen(
-    onContentClick: (Content) -> Unit,
+    onContentClick: (ContentModel) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: MainScreenViewModel = hiltViewModel(),
 ) {
@@ -69,7 +68,7 @@ fun MainScreen(
 @Composable
 private fun MainView(
     uiState: ContentUiState,
-    onContentClick: (Content) -> Unit,
+    onContentClick: (ContentModel) -> Unit,
     onSearch: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {

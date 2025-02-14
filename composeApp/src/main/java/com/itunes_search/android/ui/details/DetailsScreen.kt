@@ -2,12 +2,12 @@ package com.itunes_search.android.ui.details
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
@@ -44,11 +44,11 @@ import com.itunes_search.android.ui.theme.ThemeManager
 import com.itunes_search.data.faker.Faker
 import com.itunes_search.design.DesignTokens
 import com.itunes_search.design.SizePreset
-import com.itunes_search.domain.Content
+import com.itunes_search.domain.ContentModel
 
 @Composable
 fun DetailsScreen(
-    content: Content?,
+    content: ContentModel?,
     onBack: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -87,7 +87,7 @@ fun DetailsScreen(
 
 @Composable
 private fun DetailsView(
-    content: Content,
+    content: ContentModel,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -101,11 +101,12 @@ private fun DetailsView(
             url = content.artworkUrl100,
             modifier = Modifier
                 .fillMaxWidth()
-                .size(DesignTokens.Image.contentDetailsImageHeight.dp),
+                .height(DesignTokens.Image.contentDetailsImageHeight.dp),
         )
 
         ArtistInfoView(
-            content = content
+            modifier = Modifier.themePadding(),
+            name = content.artistName
         )
 
         Divider()
@@ -122,112 +123,103 @@ private fun DetailsView(
 
 @Composable
 private fun ArtistInfoView(
-    content: Content,
+    name: String,
     modifier: Modifier = Modifier
 ) {
-    Column(
-        modifier = modifier
-            .themePadding()
-    ) {
-        Text(
-            text = content.artistName,
-            color = MaterialTheme.colorScheme.onBackground,
-            style = MaterialTheme.typography.titleMedium
-        )
-    }
+    Text(
+        modifier = modifier,
+        text = name,
+        color = MaterialTheme.colorScheme.onBackground,
+        style = MaterialTheme.typography.titleMedium
+    )
 }
 
 @Composable
 private fun TrackInfoView(
-    content: Content,
+    content: ContentModel,
     modifier: Modifier = Modifier
 ) {
-    Row(
+    Column(
         modifier = modifier
             .fillMaxWidth()
-            .themePaddingH()
+            .themePadding(),
+        verticalArrangement = Arrangement.Top
     ) {
-        Column(
-            modifier = Modifier
-                .themePaddingV(SizePreset.Xs),
-            verticalArrangement = Arrangement.Top
-        ) {
-            content.collectionName?.let {
-                ItemView(
-                    modifier = Modifier.themePaddingV(SizePreset.Sm),
-                    label = R.string.album,
-                    value = {
-                        Text(
-                            text = it,
-                            color = MaterialTheme.colorScheme.onBackground,
-                            style = MaterialTheme.typography.bodySmall
-                        )
-                    }
-                )
-            }
-
-            content.trackName?.let {
-                ItemView(
-                    modifier = Modifier.themePaddingV(SizePreset.Sm),
-                    label = R.string.track,
-                    value = {
-                        Text(
-                            text = it,
-                            color = MaterialTheme.colorScheme.onBackground,
-                            style = MaterialTheme.typography.bodySmall
-                        )
-                    }
-                )
-            }
-
-            content.releaseDateDisplay?.let {
-                ItemView(
-                    modifier = Modifier.themePaddingV(SizePreset.Sm),
-                    label = R.string.release_date,
-                    value = {
-                        Text(
-                            text = it,
-                            color = MaterialTheme.colorScheme.onBackground,
-                            style = MaterialTheme.typography.bodySmall
-                        )
-                    }
-                )
-            }
-
+        content.collectionName?.let {
             ItemView(
                 modifier = Modifier.themePaddingV(SizePreset.Sm),
-                label = R.string.genre,
+                label = R.string.album,
                 value = {
-                    GenreView(content.primaryGenreName)
+                    Text(
+                        text = it,
+                        color = MaterialTheme.colorScheme.onBackground,
+                        style = MaterialTheme.typography.bodySmall
+                    )
                 }
             )
+        }
 
-            content.trackTime?.let {
-                ItemView(
-                    modifier = Modifier.themePaddingV(SizePreset.Sm),
-                    label = R.string.track_duration,
-                    value = {
-                        Text(
-                            text = it,
-                            color = MaterialTheme.colorScheme.onBackground,
-                            style = MaterialTheme.typography.bodySmall
-                        )
-                    }
-                )
-            }
+        content.trackName?.let {
+            ItemView(
+                modifier = Modifier.themePaddingV(SizePreset.Sm),
+                label = R.string.track,
+                value = {
+                    Text(
+                        text = it,
+                        color = MaterialTheme.colorScheme.onBackground,
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
+            )
+        }
 
-            content.collectionPrice?.let {
-                ItemView(
-                    modifier = Modifier.themePaddingV(SizePreset.Sm),
-                    label = R.string.price,
-                    value = {
-                        PriceView(
-                            price = it.toString(),
-                            currency = content.currency
-                        )
-                    }
-                )
+        content.releaseDateDisplay?.let {
+            ItemView(
+                modifier = Modifier.themePaddingV(SizePreset.Sm),
+                label = R.string.release_date,
+                value = {
+                    Text(
+                        text = it,
+                        color = MaterialTheme.colorScheme.onBackground,
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
+            )
+        }
+
+        ItemView(
+            modifier = Modifier.themePaddingV(SizePreset.Sm),
+            label = R.string.genre,
+            value = {
+                GenreView(content.primaryGenreName)
             }
+        )
+
+        content.trackTime?.let {
+            ItemView(
+                modifier = Modifier.themePaddingV(SizePreset.Sm),
+                label = R.string.track_duration,
+                value = {
+                    Text(
+                        text = it,
+                        color = MaterialTheme.colorScheme.onBackground,
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                }
+            )
+        }
+
+        content.collectionPrice?.let {
+            ItemView(
+                modifier = Modifier.themePaddingV(SizePreset.Sm),
+                label = R.string.price,
+                value = {
+                    PriceView(
+                        price = it.toString(),
+                        currency = content.currency
+                    )
+                }
+            )
         }
     }
 }

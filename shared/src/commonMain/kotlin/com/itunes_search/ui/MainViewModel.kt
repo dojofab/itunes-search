@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.itunes_search.data.faker.Faker
 import com.itunes_search.data.repository.ContentRepository
-import com.itunes_search.domain.Content
+import com.itunes_search.domain.ContentModel
 import com.itunes_search.utils.AsyncError
 import com.itunes_search.utils.AsyncOperation
 import com.itunes_search.utils.RepositoryError
@@ -17,7 +17,7 @@ import org.koin.core.component.inject
 data class ContentUiState(
     val isLoading: Boolean = false,
     val searchValue: String? = null,
-    val contents: List<Content>? = null,
+    val contents: List<ContentModel>? = null,
     val error: RepositoryError? = null
 ) {
     companion object {

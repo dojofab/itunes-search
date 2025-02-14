@@ -8,12 +8,27 @@ object DesignTokens {
 
         const val GradientBackgroundOpacity = 0.75
         const val GradientBackgroundSizeScale = 0.9f
+
+        const val DisabledContainerOpacity = 0.12 * 2.0
+        const val DisabledContentOpacity = 0.38 * 1.5
+
+        const val DividerThickness = 1.0
     }
 
     object Image {
         val contentImageHeight = 100.0
         val contentDetailsImageHeight = 300.0
         val contentTrackImageHeight = 50.0
+    }
+
+    object Icon {
+        // Icons
+        const val iconSizeXs = 12
+        const val iconSizeSm = 16
+        const val iconSizeMd = 24
+        const val iconSizeLg = 32
+        const val iconSizeXl = 40
+        const val iconSizeXxl = 48
     }
 
     object CornerRadius {

@@ -15,18 +15,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.itunes_search.android.extensions.onBackgroundMutedColor
 import com.itunes_search.android.extensions.themePaddingV
-import com.itunes_search.android.extensions.toColor
 import com.itunes_search.android.ui.theme.AppTheme
 import com.itunes_search.android.ui.theme.ThemeManager
 import com.itunes_search.data.faker.Faker
-import com.itunes_search.design.ColorTokens
 import com.itunes_search.design.DesignTokens
 import com.itunes_search.design.SizePreset
-import com.itunes_search.domain.Content
+import com.itunes_search.domain.ContentModel
 
 @Composable
 fun ContentItem(
-    content: Content,
+    content: ContentModel,
     onContentClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {

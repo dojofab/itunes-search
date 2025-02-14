@@ -1,15 +1,15 @@
 package com.itunes_search.data.faker
 
-import com.itunes_search.domain.Content
+import com.itunes_search.domain.ContentModel
 
-class ContentGenerator internal constructor() : Generator<Content>  {
+class ContentGenerator internal constructor() : Generator<ContentModel>  {
 
-    override fun build(overrides: Map<String, Any>): Content {
-        return Content(
+    override fun build(overrides: Map<String, Any>): ContentModel {
+        return ContentModel(
             wrapperType = "audiobook",
             artistId = 1211547575,
             collectionId = 1493350436,
-            artistName = "Boken The Dog",
+            artistName = names.random(),
             collectionName = "Boken The Dog - It´s All About Me!",
             collectionCensoredName = "Boken The Dog - It´s All About Me!",
             collectionViewUrl = "https://books.apple.com/us/audiobook/boken-the-dog-it-s-all-about-me/id1493350436?uo=4",
@@ -26,4 +26,24 @@ class ContentGenerator internal constructor() : Generator<Content>  {
             description = "Boken the dog - It´s all about me! It is what it says on the tin - an introduction to the adventures of Boken the Miniature Schnauzer. Before you can delve into his fun and fabulous adventures, you need to get to grips with who he is, where he lives, what he likes to do, who his amigos are and most importantly, what food he likes. Boken is a fun loving, very cheeky little chap who likes nothing more than having fun, exploring the world and loving those who love him back. Welcome to his introduction to himself and further books in his series where his adventures are fun, exciting, educational and, at times, a little bit crazy!"
         )
     }
+
+    private val names =
+        arrayListOf(
+            "Slate & Crystal Events",
+            "Indigo Event Planning",
+            "Buttercup Events",
+            "Done Right Event Designs",
+            "Polished Events",
+            "Posh Peony Events",
+            "Dark Roast Events",
+            "Origami Crane Wedding Planners",
+            "Evening Unfolds Events",
+            "Flutes & Finesse Event Planners",
+            "Basket of Gold Events",
+            "Bouquet Garni Events",
+            "Mosaic Events",
+            "Eden Springs Events",
+            "The Polished Bannister Event Planners",
+            "Honored Guests Events"
+        )
 }

@@ -7,10 +7,29 @@
 //
 
 import SwiftUI
+import Factory
 
 struct AppNavHost: View {
+  @StateObject private var viewModel = Container.shared.appNavHostViewModel()
+
   var body: some View {
-    /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Hello, world!@*/Text("Hello, world!")/*@END_MENU_TOKEN@*/
+    // Simple navigaition
+    // Ideal to implement route
+    NavigationStack {
+      MainScreen(
+        onContentClick: { content in
+          viewModel.setContent(content)
+        }
+      )
+      .navigationDestination(item: $viewModel.selectedContent) { content in
+        DetailsScreen(
+          content: content,
+          onBack: {
+          
+          }
+        )
+      }
+    }
   }
 }
 
